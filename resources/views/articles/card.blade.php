@@ -66,13 +66,33 @@
     </div>
     <div class="card-body pt-0 pb-2 pl-3">
         <div class="card-text">
-            <article-like
-            :initial-is-liked-by='@json($article->isLikedBy(Auth::user()))'
-            :initial-count-likes='@json($article->count_likes)'
-            :authorized='@json(Auth::check())'
-            endpoint="{{ route('articles.like', ['article' => $article]) }}"
-          >
-          </article-like>
+            <article-like :initial-is-liked-by='@json($article->isLikedBy(Auth::user()))'
+                :initial-count-likes='@json($article->count_likes)' :authorized='@json(Auth::check())'
+                endpoint="{{ route('articles.like', ['article' => $article]) }}">
+            </article-like>
         </div>
     </div>
-</div>
+    @foreach ($article->tags as $tag)
+        @if ($loop->first)
+            <div class="card-body pt-0 pb-4 pl-3">
+                <div class="card-text line-height">
+        @endif
+        <a href="" class="border p-1 mr-1 mt-1 text-muted">
+            {{ $tag->name }}
+        </a>
+        @if ($loop->last)
+        </div>
+        </div>
+        @endif
+    @endforeach
+    {{-- <div class="card-body pt-0 pb-4 pl-3">
+        <div class="card-text line-height">
+            <a href="http://localhost/tags/タグ1" class="border p-1 mr-1 mt-1 text-muted">
+                タグ1
+            </a>
+            <a href="http://localhost/tags/タグ2" class="border p-1 mr-1 mt-1 text-muted">
+                タグ2
+            </a>
+        </div>
+    </div> --}}
+

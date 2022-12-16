@@ -21,7 +21,6 @@
         @yield('content')
     </div>
 
-    <script src="{{ mix('js/app.js') }}"></script>
     <!-- JQuery -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <!-- Bootstrap tooltips -->
@@ -31,6 +30,7 @@
     </script>
     <!-- MDB core JavaScript -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.11/js/mdb.min.js"></script>
+    <script src="{{ mix('js/app.js') }}"></script>
 </body>
 
 </html>

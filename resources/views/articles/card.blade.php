@@ -11,7 +11,9 @@
             <div class="ml-auto card-text">
                 <div class="dropdown">
                     <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fas fa-ellipsis-v"></i>
+                        <button type="button" class="btn btn-link text-muted m-0 p-2">
+                            <i class="fas fa-ellipsis-v"></i>
+                        </button>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right">
                         <a class="dropdown-item" href="{{ route('articles.edit', ['article' => $article]) }}">
@@ -77,22 +79,12 @@
             <div class="card-body pt-0 pb-4 pl-3">
                 <div class="card-text line-height">
         @endif
-        <a href="" class="border p-1 mr-1 mt-1 text-muted">
-            {{ $tag->name }}
+        <a href="{{ route('tags.show', ['name' => $tag->name]) }}" class="border p-1 mr-1 mt-1 text-muted">
+            {{ $tag->hashtag }}
+            {{-- アクセサ（Tagモデルに記載） --}}
         </a>
         @if ($loop->last)
-        </div>
-        </div>
-        @endif
-    @endforeach
-    {{-- <div class="card-body pt-0 pb-4 pl-3">
-        <div class="card-text line-height">
-            <a href="http://localhost/tags/タグ1" class="border p-1 mr-1 mt-1 text-muted">
-                タグ1
-            </a>
-            <a href="http://localhost/tags/タグ2" class="border p-1 mr-1 mt-1 text-muted">
-                タグ2
-            </a>
-        </div>
-    </div> --}}
-
+</div>
+</div>
+@endif
+@endforeach

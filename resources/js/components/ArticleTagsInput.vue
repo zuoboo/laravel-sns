@@ -1,7 +1,9 @@
 <template>
     <div>
         <input type="hidden" name="tags" :value="tagsJson">
-        <vue-tags-input v-model="tag" :tags="tags" placeholder="タグは5個まで入力できます" :autocomplete-items="filteredItems"
+        <vue-tags-input v-model="tag" :tags="tags" placeholder="タグは5個まで入力できます"
+        :autocomplete-items="filteredItems"
+        :add-on-key="[13,32]"
             @tags-changed="newTags => tags = newTags" />
     </div>
 </template>
@@ -13,34 +15,34 @@ export default {
     components: {
         VueTagsInput,
     },
-    data() {
-        return {
-            tag: '',
-            tags: [],
-            autocompleteItems: [{
-                text: 'Spain',
-            }, {
-                text: 'France',
-            }, {
-                text: 'USA',
-            }, {
-                text: 'Germany',
-            }, {
-                text: 'China',
-            }],
-        };
-    },
-    computed: {
-        filteredItems() {
-            return this.autocompleteItems.filter(i => {
-                return i.text.toLowerCase().indexOf(this.tag.toLowerCase()) !== -1;
-            });
+    props: {
+        initialTags: {
+            type: Array,
+            default: [],
+
         },
-        tagsJson() {
-            return JSON.stringify(this.tags)
+        autocompleteItems: {
+            type: Array,
+            default: [],
+        },
     },
-    },
-};
+        data() {
+            return {
+                tag: '',
+                tags: this.initialTags,
+            };
+        },
+        computed: {
+            filteredItems() {
+                return this.autocompleteItems.filter(i => {
+                    return i.text.toLowerCase().indexOf(this.tag.toLowerCase()) !== -1;
+                });
+            },
+            tagsJson() {
+                return JSON.stringify(this.tags)
+            },
+        },
+    };
 </script>
 <style lang="css" scoped>
 .vue-tags-input {
@@ -55,5 +57,8 @@ export default {
     margin-right: 4px;
     border-radius: 0px;
     font-size: 13px;
+}
+.vue-tags-input .ti-tag::before {
+    content: "#";
 }
 </style>

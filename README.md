@@ -19,7 +19,7 @@
 * CircleCi
 * Google Login API
 ## インフラ構成図
-![スクリーンショット 2022-12-21 10 29 45](https://user-images.githubusercontent.com/99112255/208799215-284a13db-12fe-4588-92d3-faffd9dd87fd.png)
+![スクリーンショット 2022-12-21 10 40 08](https://user-images.githubusercontent.com/99112255/208800392-56e5692d-50bd-444a-9fa2-42349361f822.png)
 ## 機能一覧
 * ユーザー登録、ログイン機能
 * 投稿機能
